@@ -110,7 +110,6 @@ export default (env, argv) => {
 
       if (hxcppArchDefine) hxmlLines.push(`-D ${hxcppArchDefine}`);
 
-      hxmlLines.push("-D HXCPP_USE_OBJECT_MAP");
       hxmlLines.push("-D HXCPP_CHECK_POINTER");
       hxmlLines.push("-D HXCPP_STACK_LINE");
       hxmlLines.push("-D HXCPP_STACK_TRACE");
