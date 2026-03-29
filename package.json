@@ -64,11 +64,7 @@
 	"scripts": {
 		"start": "webpack serve --host 127.0.0.1 --port 4000",
 		"build": "webpack build --mode production",
-		"build-nw": "npm run build-nw:win",
-		"build-nw:win": "webpack build --mode production && nwbuild web -p win32 -o out --glob false --app.icon=\"web/static/images/favicon.ico\"",
-		"build-nw:mac": "webpack build --mode production && nwbuild web -p darwin -o out --glob false --app.icon=\"web/static/images/favicon.icns\" --app.LSApplicationCategoryType=\"public.app-category.utilities\" --app.NSHumanReadableCopyright=\"Copyright 2026 ShadowEngineTeam\"",
-		"build-nw:linux": "webpack build --mode production && nwbuild web -p linux -o out --glob false --app.icon=\"web/static/images/favicon.png\"",
-		"build-nw:linux-x86": "webpack build --mode production && nwbuild web -p linux-ia32 -o out --glob false --app.icon=\"web/static/images/favicon.png\"",
+		"build:haxe": "webpack --mode production --env haxe=true",
 		"serve": "webpack serve --open"
 	},
 	"repository": {

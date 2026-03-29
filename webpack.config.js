@@ -20,6 +20,7 @@ entry.unshift("core-js/stable");
 
 export default (env, argv) => {
   const prod = argv?.mode === "production";
+  const haxe = env?.haxe === true || env?.haxe === "true";
   const mode = prod ? "production" : "development";
   const target = "web";
 
@@ -40,12 +41,25 @@ export default (env, argv) => {
         patterns: [
           {
             from: "src/client/resources",
-            to: "",
+            to: haxe ? "assets" : "",
             globOptions: { ignore: ["**/.DS_Store"] },
           },
         ],
       }),
     );
+    if (haxe) {
+      plugins.push(
+        new CopyPlugin({
+          patterns: [
+            {
+               from: "src/haxe",
+               to: "",
+               globOptions: { ignore: ["**/.DS_Store"] },
+            },
+          ],
+        }),
+      );
+    }
 
     debug = false;
   } else {
@@ -67,7 +81,7 @@ export default (env, argv) => {
     entry,
     output: {
       path: outputPath,
-      filename: "static/js/index.js",
+      filename: haxe ? "assets/static/js/index.js" : "static/js/index.js",
     },
     devServer: {
       static: "./dist",
