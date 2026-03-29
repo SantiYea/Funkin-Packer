@@ -62,7 +62,7 @@ jobs:
       - name: Build
         shell: bash
         run: |
-            npm run build:haxe -- --env arch=${{ matrix.arch }}
+            npm run build-haxe -- --env arch=${{ matrix.arch }}
             cd dist
             haxe compile.hxml
 
