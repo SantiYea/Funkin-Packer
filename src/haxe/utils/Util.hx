@@ -34,7 +34,7 @@ class Util
 {
 	public static function initCustomTrace():Void
 	{
-		#if (desktop && sys)
+		#if (desktop && sys && !no_console)
 		haxe.Log.trace = function(v:Dynamic, ?infos:haxe.PosInfos):Void
 		{
 			if (infos == null)

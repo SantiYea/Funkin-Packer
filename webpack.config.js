@@ -63,6 +63,11 @@ export default (env, argv) => {
               to: "",
               globOptions: { ignore: ["**/.DS_Store"] },
             },
+            {
+              from: "icons",
+              to: "icons",
+              globOptions: { ignore: ["**/.DS_Store"] },
+            },
           ],
         })
       );
@@ -81,6 +86,7 @@ export default (env, argv) => {
       if (desktopPlatforms.includes(haxePlatform)) {
         hxmlLines.push("--library hxwebview");
         hxmlLines.push("-D desktop");
+        hxmlLines.push("-D no-console");
       } else if (mobilePlatforms.includes(haxePlatform)) {
         hxmlLines.push("--library extension-webview");
         hxmlLines.push("-D mobile");
