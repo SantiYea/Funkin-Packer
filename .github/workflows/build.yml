@@ -56,7 +56,22 @@ jobs:
         shell: bash
         run: |
           npm ci
+          if [[ "${{ matrix.os }}" == "linux" ]]; then
+            if [[ "${{ matrix.arch }}" == "x86" ]]; then
+              sudo dpkg --add-architecture i386
+              ARCH_SUFFIX=":i386"
+            elif [[ "${{ matrix.arch }}" == "armv7" ]]; then
+              sudo dpkg --add-architecture armhf
+              ARCH_SUFFIX=":armhf"
+            elif [[ "${{ matrix.arch }}" == "arm64" ]]; then
+              ARCH_SUFFIX=":arm64"
+            else
+              ARCH_SUFFIX=":amd64"
+            fi
 
+            sudo apt update
+            sudo apt install -y libgtk-4-dev${ARCH_SUFFIX}
+          fi
           haxelib --skip-dependencies git hxwebview https://github.com/ShadowEngineTeam/hxwebview
           haxelib git hxcpp https://github.com/ShadowEngineTeam/hxcpp
 
