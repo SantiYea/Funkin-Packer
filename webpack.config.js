@@ -4,6 +4,8 @@ import CopyPlugin from "copy-webpack-plugin";
 
 import { fileURLToPath } from "url";
 
+import fs from "fs";
+
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
@@ -23,6 +25,16 @@ export default (env, argv) => {
   const haxe = env?.haxe === true || env?.haxe === "true";
   const mode = prod ? "production" : "development";
   const target = "web";
+
+  const archMacroMap = {
+    "x86_64": "HXCPP_M64",
+    "x86": "HXCPP_M32",
+    "arm64": "HXCPP_ARM64",
+    "armv7": "HXCPP_ARMV7",
+  };
+
+  const arch = env?.arch || "x86_64";
+  const hxcppDefine = archMacroMap[arch];
 
   plugins.push(
     new webpack.DefinePlugin({
@@ -59,6 +71,12 @@ export default (env, argv) => {
           ],
         }),
       );
+
+      const hxmlPath = path.resolve(__dirname, "src/haxe/compile.hxml");
+      let hxml = fs.readFileSync(hxmlPath, "utf-8");
+      hxml = hxml.replace(/-D\s+HXCPP_(M64|M32|ARM64|ARMV7)/g, "");
+      hxml += `\n-D ${hxcppDefine}\n`;
+      fs.writeFileSync(hxmlPath, hxml);
     }
 
     debug = false;

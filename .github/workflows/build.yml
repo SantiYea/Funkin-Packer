@@ -1,0 +1,73 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: ubuntu-24.04
+            os: linux
+            arch: x86_64
+          - runner: ubuntu-24.04
+            os: linux
+            arch: x86
+          - runner: ubuntu-24.04-arm
+            os: linux
+            arch: arm64
+          - runner: ubuntu-24.04-arm
+            os: linux
+            arch: armv7
+          - runner: windows-latest
+            os: win
+            arch: x86_64
+          - runner: windows-latest
+            os: win
+            arch: x86
+          - runner: windows-latest
+            os: win
+            arch: arm64
+          - runner: macos-latest
+            os: mac
+            arch: x86_64
+          - runner: macos-latest
+            os: mac
+            arch: arm64
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Setup Haxe
+        uses: ShadowEngineTeam/setup-haxe@main
+        with:
+          haxe-version: 4.3.7
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+            npm ci
+            haxelib git hxwebview https://github.com/ShadowEngineTeam/hxwebview
+            haxelib git hxcpp https://github.com/ShadowEngineTeam/hxcpp
+
+      - name: Build
+        shell: bash
+        run: |
+            npm run build:haxe -- --env arch=${{ matrix.arch }}
+            cd dist
+            haxe compile.hxml
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: build-${{ matrix.os }}-${{ matrix.arch }}
+          path: dist/out/Main
