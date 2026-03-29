@@ -86,7 +86,10 @@ export default (env, argv) => {
         hxmlLines.push("-D mobile");
       }
 
-      if (haxePlatform === "windows") hxmlLines.push("-D windows");
+      if (haxePlatform === "windows") {
+	hxmlLines.push("-D windows");
+	hxmlLines.push("-D resourceFile=icon.rc");
+      }
       if (haxePlatform === "linux") hxmlLines.push("-D linux");
       if (haxePlatform === "mac" || haxePlatform === "macos") {
         hxmlLines.push("-D mac");
