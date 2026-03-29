@@ -79,11 +79,11 @@ export default (env, argv) => {
       const mobilePlatforms = ["android", "ios", "iphone", "iphoneos"];
 
       if (desktopPlatforms.includes(haxePlatform)) {
+	hxmlLines.push("--library hxwebview");
         hxmlLines.push("-D desktop");
-        hxmlLines.push("--library hxwebview");
       } else if (mobilePlatforms.includes(haxePlatform)) {
+	hxmlLines.push("--library extension-webview");
         hxmlLines.push("-D mobile");
-        hxmlLines.push("--library extension-webview");
       }
 
       if (haxePlatform === "windows") hxmlLines.push("-D windows");
