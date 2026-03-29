@@ -1,0 +1,12 @@
+.idea/*
+.vscode/*
+
+node_modules/*
+
+.DS_Store
+dist/*
+web/*
+out/*
+cache/*
+.tmp/*
+bin/*

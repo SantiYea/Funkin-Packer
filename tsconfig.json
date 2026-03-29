@@ -1,0 +1,36 @@
+{
+	"compilerOptions": {
+		"outDir": "./dist/",
+		"sourceMap": true,
+		"noImplicitAny": true,
+		"lib": ["ESNext", "dom"],
+		"target": "es2016",
+		"jsx": "react-jsx",
+		"allowJs": true,
+		"moduleResolution": "Node10",
+		"baseUrl": "./src",
+		"paths": {
+			"platform/*": ["client/platform/web/*"],
+			"api/*": ["api/*"],
+			"client/*": ["client/*"],
+			"*": ["client/*"],
+		},
+		"strict": true,
+		"strictNullChecks": false,
+		"forceConsistentCasingInFileNames": true,
+		"resolveJsonModule": true,
+		"noImplicitOverride": true,
+		"noImplicitReturns": true,
+		"isolatedModules": true,
+		"allowUnusedLabels": false,
+		"strictBindCallApply": true,
+		"strictFunctionTypes": true,
+		"alwaysStrict": true,
+		"noFallthroughCasesInSwitch": true,
+		"noImplicitThis": true,
+		"verbatimModuleSyntax": true,
+	},
+	"exclude": [
+        "node_modules"
+    ]
+}

@@ -1,0 +1,38 @@
+# TODO
+
+- [ ] Allow repacking files with manual offsets (Preview only done, Exporting **not done**)
+- [ ] Allow people to edit the offsets in app
+- [ ] Allow people to rename the frames in app
+- [ ] Make scaling happen before packing, not at export, make sure to scale offsets too
+- [ ] Make trimming happen on import?
+- [ ] Add more caching
+- [ ] Make the app more optimized when selecting stuff
+- [ ] Make the frame object be passed in to the packer
+- [ ] Find a way to optimize images (half done. uses blobs now)
+- [ ] Bruteforce the width and height
+- [ ] Make a thing that says if it should retrim and such, or only repack, (observer) for caching and performance
+- [ ] APNG support
+- [ ] GIF support
+- [ ] Fix the width height not being exact when non fixed size
+- [ ] Make it apply detect identical at the import stage
+- [ ] Make splitter allow importing multiple files at once with drag and drop
+- [ ] Mobile support?
+- [ ] Make zip loading async, by loading files in parallel
+- [ ] Make the app more responsive
+- [ ] Image Editor? to remove stray pixels
+- [ ] CLI program to repack
+- [ ] Convert filters to typescript
+- [ ] Get corejs to only include what is needed
+- [ ] Make it store Duplicates only once
+- [ ] Make it so repacking stores all of the previous repacks to to provide more accurate stats
+- [ ] Rewrite css to sass or something else
+- [ ] export individual frames from a spritesheet
+- [ ] Make ctrl keybinds use command key on mac
+- [ ] Make it so frame offsets arent used when packing and such, for more optimization, (Make sure trim toggle still works)
+- [ ] Make it so the app can be used offline
+- [ ] Smart ordered packer, which adds frames below if theres enough space
+- [ ] Fix double pack when repacking
+- [ ] Make it so the program calculates the padding used, and shows it in repacker
+- [ ] Make it so growing packer and ordered packer uses the max width and height
+- [ ] Fix exporter not using utf8 encoding
+- [X] Add haxe xml parser
