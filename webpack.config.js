@@ -88,7 +88,7 @@ export default (env, argv) => {
 
       if (haxePlatform === "windows") {
 	hxmlLines.push("-D windows");
-	hxmlLines.push("-D resourceFile=icon.rc");
+	hxmlLines.push("-D resourceFile=..\\icon.rc");
       }
       if (haxePlatform === "linux") hxmlLines.push("-D linux");
       if (haxePlatform === "mac" || haxePlatform === "macos") {
