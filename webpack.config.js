@@ -79,16 +79,16 @@ export default (env, argv) => {
       const mobilePlatforms = ["android", "ios", "iphone", "iphoneos"];
 
       if (desktopPlatforms.includes(haxePlatform)) {
-	hxmlLines.push("--library hxwebview");
+        hxmlLines.push("--library hxwebview");
         hxmlLines.push("-D desktop");
       } else if (mobilePlatforms.includes(haxePlatform)) {
-	hxmlLines.push("--library extension-webview");
+        hxmlLines.push("--library extension-webview");
         hxmlLines.push("-D mobile");
       }
 
       if (haxePlatform === "windows") {
-	hxmlLines.push("-D windows");
-	hxmlLines.push("-D resourceFile=..\\icon.rc");
+        hxmlLines.push("-D windows");
+        hxmlLines.push("-D resourceFile=..\\icon.rc");
       }
       if (haxePlatform === "linux") hxmlLines.push("-D linux");
       if (haxePlatform === "mac" || haxePlatform === "macos") {

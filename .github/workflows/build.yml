@@ -55,17 +55,17 @@ jobs:
       - name: Install dependencies
         shell: bash
         run: |
-            npm ci
-            
-            haxelib --skip-dependencies git hxwebview https://github.com/ShadowEngineTeam/hxwebview
-            haxelib git hxcpp https://github.com/ShadowEngineTeam/hxcpp
+          npm ci
+
+          haxelib --skip-dependencies git hxwebview https://github.com/ShadowEngineTeam/hxwebview
+          haxelib git hxcpp https://github.com/ShadowEngineTeam/hxcpp
 
       - name: Build
         shell: bash
         run: |
-            npm run build-haxe:${{ matrix.os }} -- --env arch=${{ matrix.arch }}
-            cd dist
-            haxe compile.hxml
+          npm run build-haxe:${{ matrix.os }} -- --env arch=${{ matrix.arch }}
+          cd dist
+          haxe compile.hxml
 
       - name: Upload Artifact
         uses: actions/upload-artifact@v5
