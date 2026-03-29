@@ -35,8 +35,6 @@ export default (env, argv) => {
   let outputPath = path.resolve(__dirname, "dist");
 
   if (prod) {
-    outputPath = path.resolve(__dirname, "web");
-
     plugins.push(
       new CopyPlugin({
         patterns: [
@@ -44,10 +42,6 @@ export default (env, argv) => {
             from: "src/client/resources",
             to: "",
             globOptions: { ignore: ["**/.DS_Store"] },
-          },
-          {
-            from: "src/package.json",
-            to: "package.json",
           },
         ],
       }),
