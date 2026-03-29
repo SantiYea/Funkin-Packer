@@ -70,7 +70,7 @@ jobs:
             fi
 
             sudo apt update
-            sudo apt install -y libgtk-4-dev${ARCH_SUFFIX}
+            sudo apt install -y libgtk-3-dev${ARCH_SUFFIX} libwebkit2gtk-4.1-dev${ARCH_SUFFIX}
           fi
           haxelib --skip-dependencies git hxwebview https://github.com/ShadowEngineTeam/hxwebview
           haxelib git hxcpp https://github.com/ShadowEngineTeam/hxcpp
