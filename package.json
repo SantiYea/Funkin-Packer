@@ -70,6 +70,7 @@
 		"build-haxe:linux": "webpack --mode production --env haxe=true --env haxePlatform=linux",
 		"build-haxe:mac": "webpack --mode production --env haxe=true --env haxePlatform=mac",
 		"build-haxe:macos": "npm run build-haxe:mac",
+		"build-haxe:osx": "npm run build-haxe:mac"
 		"build-haxe:android": "webpack --mode production --env haxe=true --env haxePlatform=android",
 		"build-haxe:ios": "webpack --mode production --env haxe=true --env haxePlatform=ios",
 		"build-haxe:iphoneos": "npm run build-haxe:ios",
