@@ -61,7 +61,7 @@ jobs:
             if [[ "${{ matrix.arch }}" == "x86" ]]; then
               sudo dpkg --add-architecture i386
               ARCH_SUFFIX=":i386"
-              EXTRA_PKGS="libstdc++-11-dev-i386-cross"
+              EXTRA_PKGS="gcc-multilib g++-multilib"
             elif [[ "${{ matrix.arch }}" == "armv7" ]]; then
               sudo dpkg --add-architecture armhf
               ARCH_SUFFIX=":armhf"
