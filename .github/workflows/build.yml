@@ -65,6 +65,9 @@ jobs:
             elif [[ "${{ matrix.arch }}" == "armv7" ]]; then
               sudo dpkg --add-architecture armhf
               ARCH_SUFFIX=":armhf"
+              EXTRA_PKGS="gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf"
+              echo "CC=arm-linux-gnueabihf-gcc" >> $GITHUB_ENV
+              echo "CXX=arm-linux-gnueabihf-g++" >> $GITHUB_ENV
             elif [[ "${{ matrix.arch }}" == "arm64" ]]; then
               ARCH_SUFFIX=":arm64"
             else
