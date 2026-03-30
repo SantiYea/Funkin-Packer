@@ -73,12 +73,18 @@ body {
 
 .images-controllers {
   padding: 8px;
-  height: 30px;
+  min-height: 40px;
   text-align: center;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
 }
 
 .images-controllers hr {
-  margin-top: 16px;
+  flex-basis: 100%;
+  margin-top: 8px;
   border: none;
   color: rgba(0, 0, 0, 0.2);
   background-color: rgba(0, 0, 0, 0.2);
@@ -86,9 +92,19 @@ body {
 }
 
 .images-controllers .btn {
-  margin-left: 4px;
-  margin-right: 4px;
-  margin-bottom: -11px;
+  margin: 4px;
+  flex-shrink: 0;
+}
+
+.images-upload-buttons {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.images-upload-buttons .btn {
+  margin: 0;
 }
 
 .images-tree {
@@ -186,6 +202,8 @@ body {
   -ms-user-select: none;
   user-select: none;
   white-space: nowrap;
+  flex-shrink: 0;
+  min-width: fit-content;
 }
 
 .btn:active {
@@ -329,13 +347,27 @@ body {
   width: -o-calc(100% - 20px);
   width: calc(100% - 20px);
   min-width: 560px;
-  height: 50px;
+  min-height: 50px;
+  height: auto;
   box-sizing: border-box;
   padding: 8px;
   vertical-align: bottom;
   text-align: center;
   font-weight: bold;
   box-shadow: 0px 1px 0px 0px rgba(0, 0, 0, 0.2);
+}
+
+.results-view-footer hr {
+  margin: 8px 0;
+}
+
+.results-view-footer table {
+  margin: 0 auto;
+}
+
+.results-view-footer td {
+  white-space: nowrap;
+  padding: 2px 4px;
 }
 
 .results-view-footer .btn {
@@ -849,7 +881,7 @@ body {
 }
 
 .sheet-splitter-content {
-  width: 740px;
+  width: 780px;
   height: 530px;
   background: #fff;
   margin: auto;
@@ -897,7 +929,7 @@ body {
   border-width: 1px;
   border-style: solid;
   border-color: #333;
-  width: 500px;
+  width: 460px;
   height: 420px;
   float: left;
   overflow: auto;
@@ -913,26 +945,27 @@ body {
 
 .sheet-splitter-controls {
   float: right;
-  width: 220px;
-  /* height: 420px; */
+  width: 280px;
   padding-right: 10px;
 }
 
 .sheet-splitter-controls select {
-  width: 104px;
+  width: 140px;
 }
 
 .sheet-splitter-controls input[type="number"] {
-  width: 100px;
+  width: 120px;
 }
 
 .sheet-splitter-controls td {
   font-weight: bold;
   padding: 2px;
-  min-width: 90px;
-  white-space: nowrap;
+  white-space: normal;
   text-align: left;
   font-size: 12px;
+  word-wrap: break-word;
+  max-width: 160px;
+  vertical-align: middle;
 }
 
 .sheet-splitter-info {
@@ -989,16 +1022,20 @@ body {
   position: relative;
   display: flex;
   justify-content: space-between;
+  align-items: center;
 }
 
 .main-header-app-name {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
   font-size: 20px;
+  flex-shrink: 0;
 }
 
 .main-header-app-name img {
   vertical-align: middle;
   margin-right: 8px;
+  margin-top: 4px;
 }
 
 .based-on {
@@ -1007,25 +1044,38 @@ body {
   left: 5.2rem;
   font-size: 12px;
   font-weight: normal;
+  white-space: nowrap;
 }
 
 .main-header-language {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 16px;
 }
 
 .main-header-language select {
   margin-left: 8px;
-  margin-right: 16px;
-  width: 100px;
+  min-width: 80px;
+  max-width: 160px;
 }
 
 .main-header-controls {
-  display: inline-block;
-  margin-right: 16px;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
+  margin-left: 16px;
+}
+
+.main-header-controls .btn {
+  white-space: nowrap;
+  flex-shrink: 0;
 }
 
 .main-header-github {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
   margin-left: 16px;
 }
 
@@ -1034,7 +1084,9 @@ body {
 }
 
 .main-header-bmc {
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
   margin-left: 16px;
 }
 
@@ -1049,17 +1101,22 @@ body {
   cursor: pointer;
   padding-left: 8px;
   padding-right: 8px;
-  display: inline-block;
+  display: inline-flex;
+  align-items: center;
+  flex-shrink: 0;
 }
 
 .stats-info {
   display: flex;
   align-items: center;
+  flex-shrink: 0;
 }
 
 .stats-info-item {
   display: flex;
   flex-direction: column;
+  flex-shrink: 0;
+  min-width: fit-content;
   padding-right: 4px;
   padding-left: 4px;
 
@@ -1085,10 +1142,16 @@ body {
 
 .rtl .images-list {
   float: right;
+  text-align: right;
 }
 
 .rtl .props-list {
   float: left;
+}
+
+.rtl .images-tree {
+  left: auto;
+  right: 0;
 }
 
 .rtl .results-view-wrapper {
@@ -1104,6 +1167,10 @@ body {
   float: left;
 }
 
+.rtl .sheet-splitter-controls td {
+  text-align: right;
+}
+
 .rtl .sheet-splitter-info {
   float: left;
 }
@@ -1113,24 +1180,41 @@ body {
   right: 5.2rem;
 }
 
+.rtl .main-header-language {
+  margin-left: 0;
+  margin-right: 16px;
+}
+
 .rtl .main-header-language select {
-  margin-left: 16px;
+  margin-left: 8px;
   margin-right: 8px;
 }
 
 .rtl .main-header-controls {
-  margin-left: 16px;
-  margin-right: auto;
+  margin-left: 0;
+  margin-right: 16px;
 }
 
 .rtl .main-header-github {
-  margin-right: 16px;
-  margin-left: auto;
+  margin-right: 0;
+  margin-left: 16px;
 }
 
 .rtl .main-header-bmc {
-  margin-right: 16px;
-  margin-left: auto;
+  margin-right: 0;
+  margin-left: 16px;
+}
+
+.rtl .main-header {
+  flex-direction: row-reverse;
+}
+
+.rtl .images-controllers {
+  flex-direction: row-reverse;
+}
+
+.rtl .images-upload-buttons {
+  flex-direction: row-reverse;
 }
 
 .rtl .about-content,
@@ -1166,6 +1250,10 @@ body {
   margin-right: 4px;
 }
 
+.rtl .results-view-footer td {
+  text-align: right;
+}
+
 .rtl .results-view-footer .btn-back-color {
   margin-right: 0;
   margin-left: 8px;
@@ -1179,4 +1267,30 @@ body {
 .rtl .pack-properties-containter input[type="number"],
 .rtl .pack-properties-containter select {
   text-align: right;
+}
+
+.rtl .image-list-name-container {
+  padding-left: 0;
+  padding-right: 4px;
+}
+
+.rtl input,
+.rtl select,
+.rtl textarea {
+  direction: rtl;
+}
+
+.rtl .stats-info {
+  flex-direction: row-reverse;
+}
+
+.rtl .stats-info-item {
+  flex-direction: column-reverse;
+}
+
+.pack-properties-containter td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 150px;
 }

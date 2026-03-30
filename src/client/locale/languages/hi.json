@@ -141,7 +141,7 @@
 	"STATS_USED_PACKER": "पैकर",
 	"STATS_SI_TITLE": "SI इकाइयाँ (रैम उपयोग आँकड़े के लिए प्रयुक्त)\nCodename Engine SI = 1024\nPsych 0.7+ SI = 1024\nPsych 0.6 और उससे कम SI = 1000",
 	"STATS_SI": "SI इकाइयाँ:",
-	"BASED_ON": "फ्री टेक्सचर पैकर पर आधारित",
+	"BASED_ON": "Free Texture Packer पर आधारित",
 	"UNKNOWN_ERROR": "अज्ञात त्रुटि: %s",
 	"NO_IMAGES_ERROR": "छवियाँ नहीं मिलीं। कृपया, पहले छवियाँ जोड़ें"
 }
