@@ -18,7 +18,7 @@ class Loader
 
 		webview = new WebView(debug);
 		webview.setTitle('Funkin Packer');
-		webview.setSize(1280, 720, NONE);
+		webview.setSize(1300, 720, NONE);
 		webview.navigate(Server.resolveAsset('index.html'));
 
 		running.store(true);
