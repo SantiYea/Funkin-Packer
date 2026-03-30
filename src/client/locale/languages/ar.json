@@ -139,7 +139,7 @@
 	"STATS_SIZE": "الحجم",
 	"STATS_RAM": "الذاكرة",
 	"STATS_USED_PACKER": "الحزمة",
-	"STATS_SI_TITLE": "وحدات SI (تستخدم لإحصائيات استخدام الذاكرة)\nCodename Engine SI = 1024\nPsych 0.7+ SI = 1024\nPsych 0.6 وأقل SI = 1000",
+	"STATS_SI_TITLE": "وحدات SI (تستخدم لإحصائيات استخدام الذاكرة)\nShadow Engine SI = 1024\nPsych 0.7+ SI = 1024\nPsych 0.6 وأقل SI = 1000",
 	"STATS_SI": "وحدات SI:",
 	"BASED_ON": "مبني على Free Texture Packer",
 	"UNKNOWN_ERROR": "خطأ غير معروف: %s",

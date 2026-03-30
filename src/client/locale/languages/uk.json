@@ -139,7 +139,7 @@
 	"STATS_SIZE": "Розмір",
 	"STATS_RAM": "ОЗП",
 	"STATS_USED_PACKER": "Пакувальник",
-	"STATS_SI_TITLE": "Одиниці СІ (Використовується для статистики використання ОЗП)\nCodename Engine SI = 1024\nPsych 0.7+ SI = 1024\nPsych 0.6 та нижче SI = 1000",
+	"STATS_SI_TITLE": "Одиниці СІ (Використовується для статистики використання ОЗП)\nShadow Engine SI = 1024\nPsych 0.7+ SI = 1024\nPsych 0.6 та нижче SI = 1000",
 	"STATS_SI": "Одиниці СІ:",
 	"BASED_ON": "На основі Free Texture Packer",
 	"UNKNOWN_ERROR": "Невідома помилка: %s",
