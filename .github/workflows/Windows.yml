@@ -1,0 +1,76 @@
+name: Build
+
+on:
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ${{ matrix.runner }}
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - runner: windows-latest
+            os: win
+            arch: x86_64
+          - runner: windows-latest
+            os: win
+            arch: x86
+          - runner: windows-latest
+            os: win
+            arch: arm64
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v5
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 24
+
+      - name: Setup Haxe
+        uses: ShadowEngineTeam/setup-haxe@main
+        with:
+          haxe-version: 4.3.7
+
+      - name: Install dependencies
+        shell: bash
+        run: |
+          npm ci
+          if [[ "${{ matrix.os }}" == "linux" ]]; then
+            EXTRA_PKGS=""
+            if [[ "${{ matrix.arch }}" == "x86" ]]; then
+              sudo dpkg --add-architecture i386
+              ARCH_SUFFIX=":i386"
+              EXTRA_PKGS="gcc-multilib g++-multilib"
+            elif [[ "${{ matrix.arch }}" == "armv7" ]]; then
+              sudo dpkg --add-architecture armhf
+              ARCH_SUFFIX=":armhf"
+              EXTRA_PKGS="gcc-arm-linux-gnueabihf g++-arm-linux-gnueabihf"
+              echo "CC=arm-linux-gnueabihf-gcc" >> $GITHUB_ENV
+              echo "CXX=arm-linux-gnueabihf-g++" >> $GITHUB_ENV
+            elif [[ "${{ matrix.arch }}" == "arm64" ]]; then
+              ARCH_SUFFIX=":arm64"
+            else
+              ARCH_SUFFIX=":amd64"
+            fi
+
+            sudo apt update
+            sudo apt install -y libgtk-3-dev${ARCH_SUFFIX} libwebkit2gtk-4.1-dev${ARCH_SUFFIX} ${EXTRA_PKGS}
+          fi
+          haxelib --skip-dependencies git hxwebview https://github.com/ShadowEngineTeam/hxwebview
+          haxelib git hxcpp https://github.com/ShadowEngineTeam/hxcpp
+
+      - name: Build
+        shell: bash
+        run: |
+          npm run build-haxe:${{ matrix.os }} -- --env arch=${{ matrix.arch }}
+          cd dist
+          haxe compile.hxml -D no_console
+
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v5
+        with:
+          name: build-${{ matrix.os }}-${{ matrix.arch }}
+          path: dist/out/Main*
